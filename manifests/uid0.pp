@@ -6,12 +6,12 @@
 #
 
 class compliance::uid0 {
-  if $operatingsystem == "SLES" and $operatingsystemrelease >= 11 {
+  #if $operatingsystem == "SLES" and $operatingsystemrelease >= 11 {
     file { ['/etc/puppetlabs/facter','/etc/puppetlabs/facter/facts.d']:
       ensure => directory,
       owner  => root,
       group  => root,
-    } ->
+     } ->
 
     file { '/etc/puppetlabs/facter/facts.d/uid0.sh':
       source  => 'puppet:///modules/compliance/uid0.sh',
@@ -21,8 +21,12 @@ class compliance::uid0 {
     }
 
     if $::uid0 == 'fail' {
-      notify { "Node ${::fqdn} failed uid0 requirement due to existence of ${::uid0_failures}": }
+      $uids = parsejson($::uid0_failures)
+      notify { $uids: }
+      notify { "Node ${::fqdn} failed uid0 requirement due to existence of ${::uid0_failures} user(s).":
+        tag => ['uid0_failure'],
+      }
     }
 
-  }
+    #}
 }
