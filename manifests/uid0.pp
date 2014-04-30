@@ -21,7 +21,9 @@ class compliance::uid0 {
     }
 
     if $::uid0 == 'fail' {
+      # Using parsejson function from puppetlabs/stdlib
       $uids = parsejson($::uid0_failures)
+       
       notify { "Node ${::fqdn} failed uid0 requirement due to existence of ${::uid0_failures} user(s).":
         tag => ['uid0_failure'],
       }
