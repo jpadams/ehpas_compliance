@@ -20,14 +20,21 @@ class compliance::uid0 {
       mode    => '0700',
     }
 
-    if $::uid0 == 'fail' {
+    #if $::uid0 == 'fail' {
       # Using parsejson function from puppetlabs/stdlib
-      $uids = parsejson($::uid0_failures)
+      $values = parsejson($::uid0_failures)
        
-      notify { "Node ${::fqdn} failed uid0 requirement due to existence of ${::uid0_failures} user(s).":
-        tag => ['uid0_failure'],
+      #notify { "Node ${::fqdn} failed uid0 requirement due to existence of ${::uid0_failures} user(s).":
+     $code = upcase($::uid0)
+     $check = 'UID0'
+     $item = ''
+     $type = ''
+     #notify { "code:${code}\tcheck:UID0\t failed uid0 requirement due to existence of ${::uid0_failures} user(s)."
+    $result = split(template('compliance/ehpas.erb'), ",")
+    notify { $result:
+        tag => ['ehpas'],
       }
-    }
+    #}
 
     #}
 }
