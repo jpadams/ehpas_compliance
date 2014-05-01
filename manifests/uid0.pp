@@ -32,7 +32,7 @@ class ehpas_compliance::uid0 {
     $item = ''
     $type = ''
 
-    $result = split(template('compliance/ehpas.erb'), ",")
+    $result = split(template('ehpas_compliance/ehpas.erb'), ",")
     notify { $result:
       tag => ['ehpas'],
     }
