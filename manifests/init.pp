@@ -1,7 +1,3 @@
-class compliance {
-  #include compliance::banner
-  include compliance::ssh
-  include compliance::cron
-  include compliance::files
-  include compliance::uid0
+class ehpas_compliance {
+  include ehpas_compliance::uid0
 }

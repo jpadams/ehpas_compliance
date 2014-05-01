@@ -1,11 +1,11 @@
-# Class compliance::uid0
+# Class ehpas_compliance::uid0
 #
 # Ensure no UID 0 account exist other than root.
 #
 # This is a reported, not enforced, control item.
 #
 
-class compliance::uid0 {
+class ehpas_compliance::uid0 {
   #if $operatingsystem == "SLES" and $operatingsystemrelease >= 11 {
     file { ['/etc/puppetlabs/facter','/etc/puppetlabs/facter/facts.d']:
       ensure => directory,
