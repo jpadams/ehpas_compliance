@@ -1,3 +1,6 @@
+<% if @values.empty? -%>
+  <%= "code:#{@code}\tcheck:#{@check}\tvalue:root\titem:#{@item}\ttype:#{type}" -%>
+<% end -%>
 <% @values.each do |value| -%>
   <%= "code:#{@code}\tcheck:#{@check}\tvalue:#{value}\titem:#{@item}\ttype:#{type}" -%>
   <%= ',' unless value.equal?(@values.last) -%>
