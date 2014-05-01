@@ -1,4 +1,4 @@
 <% @values.each do |value| -%>
   <%= "code:#{@code}\tcheck:#{@check}\tvalue:#{value}\titem:#{@item}\ttype:#{type}" -%>
-  <%= ',' unless value.equal?(@values.last)
+  <%= ',' unless value.equal?(@values.last) -%>
 <% end -%>
