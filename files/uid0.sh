@@ -7,7 +7,7 @@
 COMMAND=`cat /etc/passwd | awk -F: '($3 == 0) { print $1 }' | grep -v '^root$' | sed "s/^\|\$/\"/g" | paste -sd, | sed "s/^/[/" | sed "s/$/]/"`
 
 # If empty JSON array []
-if [ x$COMMAND == x[] ]; then 
+if [ x$COMMAND = x[] ]; then 
   echo uid0=pass;
 else 
   echo uid0=fail;
